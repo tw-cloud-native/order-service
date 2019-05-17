@@ -1,0 +1,79 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.0.2.RELEASE")
+    }
+}
+
+plugins {
+    id "org.springframework.boot" version "2.0.6.RELEASE"
+    id "com.palantir.docker" version "0.13.0"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+    id "org.flywaydb.flyway" version "5.0.7"
+    id "com.gorylenko.gradle-git-properties" version "1.5.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'spring-cloud-contract'
+
+group = 'com.dmall'
+version = '0.1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'order-service'
+    version = "${version}"
+}
+
+docker {
+    name "${project.group}/${jar.baseName}"
+    files jar.archivePath
+    buildArgs(['JAR_FILE': "${jar.archiveName}"])
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+
+ext {
+    springCloudVersion = 'Finchley.SR2'
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.session:spring-session-data-redis')
+    compile('org.springframework.cloud:spring-cloud-starter-openfeign')
+    compile('org.flywaydb:flyway-core')
+    compile('mysql:mysql-connector-java')
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+contracts {
+    packageWithBaseClasses = 'com.dmall.orderservice.contract.base'
+    contractsDslDir = project.file("api")
+}
+
+flyway {
+    url = 'jdbc:mysql://localhost/order_service_db'
+    user = 'root'
+    password = 'abcd1234'
+}

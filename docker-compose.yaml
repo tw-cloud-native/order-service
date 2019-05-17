@@ -1,0 +1,12 @@
+version: "2"
+services:
+  mysql-db:
+    image: percona
+    environment:
+     - MYSQL_ROOT_PASSWORD=abcd1234
+     - MYSQL_DATABASE=order_service_db
+    tmpfs:
+     - /tmp
+    ports:
+     - 3306:3306
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

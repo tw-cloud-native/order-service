@@ -1,0 +1,2 @@
+ALTER TABLE orders
+  ADD COLUMN (quantity INT NOT NULL, address NVARCHAR(500) NOT NULL, phoneNumber VARCHAR(20) NOT NULL, paid BOOL NOT NULL);
