@@ -14,8 +14,6 @@ management:
 dmall:
   inventory:
     url: http://localhost:9081
-  shipping:
-    url: http://localhost:9085
 ---
 spring:
   profiles: prod
@@ -25,5 +23,3 @@ spring:
 dmall:
   inventory:
     url: http://inventory-service:9080
-  shipping:
-    url: http://shipping-service:9080

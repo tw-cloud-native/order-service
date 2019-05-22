@@ -17,13 +17,11 @@ import java.math.BigDecimal;
 public class OrderApplicationService {
     private final OrderRepository orderRepository;
     private final InventoryClient inventoryClient;
-    private final ShippingClient shippingClient;
-    
+
     @Autowired
-    public OrderApplicationService(OrderRepository orderRepository, InventoryClient inventoryClient, ShippingClient shippingClient) {
+    public OrderApplicationService(OrderRepository orderRepository, InventoryClient inventoryClient) {
         this.orderRepository = orderRepository;
         this.inventoryClient = inventoryClient;
-        this.shippingClient = shippingClient;
     }
 
     public Order createOrder(long productId, int quantity, BigDecimal totalPrice, String address, String phoneNumber) {
@@ -46,7 +44,6 @@ public class OrderApplicationService {
      public void paidOrder(String orderId){
          final Order order = orderRepository.getOrder(orderId);
          order.paid();
-         shippingClient.shipping(new Shipping(order.getId(),order.getQuantity(),order.getAddress()));
          inventoryClient.unlock(order.getLockId());
          orderRepository.save(order);
      }
@@ -61,20 +58,4 @@ public class OrderApplicationService {
     public Order getOrder(String orderId) {
         return orderRepository.getOrder(orderId);
     }
-
-    @FeignClient(url = "${dmall.shipping.url}", name = "shipping")
-    public interface ShippingClient {
-        @RequestMapping(method = RequestMethod.POST, value = "/shippings")
-        void shipping(Shipping shipping);
-    }
-    
-    @Getter
-    @AllArgsConstructor
-    public static class Shipping{
-        String orderId;
-        int quantity;
-        String address;
-    }
-    
-    
 }
