@@ -8,11 +8,11 @@ buildscript {
 }
 
 plugins {
-    id "org.springframework.boot" version "2.0.6.RELEASE"
-    id "com.palantir.docker" version "0.13.0"
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
+    id "org.springframework.boot" version "2.0.6.RELEASE"
     id "org.flywaydb.flyway" version "5.0.7"
     id "com.gorylenko.gradle-git-properties" version "1.5.1"
+    id "com.palantir.docker" version "0.13.0"
 }
 
 apply plugin: 'java'
@@ -40,25 +40,27 @@ repositories {
     mavenCentral()
 }
 
-
-
 ext {
     springCloudVersion = 'Finchley.SR2'
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-security')
-    compile('org.springframework.boot:spring-boot-starter-data-redis')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.session:spring-session-data-redis')
-    compile('org.springframework.cloud:spring-cloud-starter-openfeign')
-    compile('org.flywaydb:flyway-core')
-    compile('mysql:mysql-connector-java')
-    compileOnly('org.projectlombok:lombok')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+
+    compileOnly 'org.projectlombok:lombok'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+
+    runtimeOnly 'com.h2database:h2'
 }
 
 dependencyManagement {
@@ -70,10 +72,4 @@ dependencyManagement {
 contracts {
     packageWithBaseClasses = 'com.dmall.orderservice.contract.base'
     contractsDslDir = project.file("api")
-}
-
-flyway {
-    url = 'jdbc:mysql://localhost/order_service_db'
-    user = 'root'
-    password = 'abcd1234'
 }

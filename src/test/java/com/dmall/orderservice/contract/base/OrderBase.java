@@ -21,7 +21,7 @@ public class OrderBase {
                         new Order("order-id-1", 1, 10, new BigDecimal("1"), "address", "phoneNumber", false, "1")
                 );
         when(orderApplicationService.getOrder(anyString())).thenReturn(
-                        new Order("1", 1, 10, new BigDecimal(100), "address001", "110", true, "1")
+                new Order("1", 1, 10, new BigDecimal(100), "address001", "110", true, "1")
         );
         RestAssuredMockMvc.standaloneSetup(new OrderController(orderApplicationService));
     }

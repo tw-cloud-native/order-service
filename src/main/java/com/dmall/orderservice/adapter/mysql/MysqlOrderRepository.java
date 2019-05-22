@@ -26,7 +26,7 @@ public class MysqlOrderRepository implements OrderRepository {
                 .findById(orderId)
                 .map(entity -> new Order(entity.getId(), entity.getProductId(),
                         entity.getQuantity(), entity.getTotalPrice(), entity.getAddress(),
-                        entity.getPhoneNumber(), entity.isPaid(),entity.getLockId()))
+                        entity.getPhoneNumber(), entity.isPaid(), entity.getLockId()))
                 .orElse(null);
 
     }

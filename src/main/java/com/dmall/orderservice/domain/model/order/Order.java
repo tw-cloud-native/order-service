@@ -29,6 +29,6 @@ public class Order {
     }
 
     public void paid() {
-        paid=true;
+        paid = true;
     }
 }

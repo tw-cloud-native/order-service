@@ -1,25 +1,58 @@
-server:
-  port: 9082
-spring:
-  redis:
-    host: 127.0.0.1
-  datasource:
-    url: jdbc:mysql://localhost/order_service_db
-    username: root
-    password: abcd1234
-management:
-  endpoints:
-    web:
-      base-path: /orders/actuator
 dmall:
   inventory:
     url: http://localhost:9081
+
+server:
+  port: 9082
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:h2:mem:order_service_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS order_service_db
+    platform: h2
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: true
+  flyway:
+    locations: "classpath:/db/migration"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /swagger
 ---
 spring:
   profiles: prod
-  datasource:
-    url: jdbc:mysql://dmall-order-db.cti1pnc10c3g.rds.cn-north-1.amazonaws.com.cn/order_service_db
-    username: admin
+
 dmall:
   inventory:
     url: http://inventory-service:9080
