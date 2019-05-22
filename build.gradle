@@ -1,9 +1,9 @@
 buildscript {
-    repositories {
-        mavenCentral()
+    ext {
+        springBootVersion = '2.1.5.RELEASE'
     }
     dependencies {
-        classpath("org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.0.2.RELEASE")
+        classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.0.2.RELEASE"
     }
 }
 
@@ -11,7 +11,7 @@ plugins {
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
     id "org.springframework.boot" version "2.0.6.RELEASE"
     id "org.flywaydb.flyway" version "5.0.7"
-    id "com.gorylenko.gradle-git-properties" version "1.5.1"
+    id "com.gorylenko.gradle-git-properties" version "2.0.0"
     id "com.palantir.docker" version "0.13.0"
 }
 
@@ -37,11 +37,13 @@ docker {
 }
 
 repositories {
+    maven {url "http://nexus.cloud.school.thoughtworks.cn/repository/maven-public/"}
+    maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     mavenCentral()
 }
 
 ext {
-    springCloudVersion = 'Finchley.SR2'
+    springCloudVersion = 'Greenwich.SR1'
 }
 
 dependencies {
@@ -55,10 +57,11 @@ dependencies {
     implementation 'io.springfox:springfox-swagger2:2.9.2'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
-    compileOnly 'org.projectlombok:lombok'
-
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
     runtimeOnly 'com.h2database:h2'
 }
