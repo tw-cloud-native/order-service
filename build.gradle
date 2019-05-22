@@ -2,7 +2,15 @@ buildscript {
     ext {
         springBootVersion = '2.1.5.RELEASE'
     }
+
+    repositories {
+        maven {url "http://nexus.cloud.school.thoughtworks.cn/repository/maven-public/"}
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        mavenCentral()
+    }
+
     dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:2.0.2.RELEASE"
     }
 }
