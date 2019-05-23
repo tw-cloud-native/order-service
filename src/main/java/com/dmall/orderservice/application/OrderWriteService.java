@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.math.BigDecimal;
 
 @Service
-public class OrderApplicationService {
+public class OrderWriteService {
     private final OrderRepository orderRepository;
     private final InventoryClient inventoryClient;
 
     @Autowired
-    public OrderApplicationService(OrderRepository orderRepository, InventoryClient inventoryClient) {
+    public OrderWriteService(OrderRepository orderRepository, InventoryClient inventoryClient) {
         this.orderRepository = orderRepository;
         this.inventoryClient = inventoryClient;
     }
@@ -38,10 +38,6 @@ public class OrderApplicationService {
         order.paid();
         inventoryClient.unlock(order.getLockId());
         orderRepository.save(order);
-    }
-
-    public Order getOrder(String orderId) {
-        return orderRepository.getOrder(orderId);
     }
 
     @FeignClient(url = "${dmall.inventory.url}", name = "inventory")
