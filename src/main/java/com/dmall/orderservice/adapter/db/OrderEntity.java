@@ -1,4 +1,4 @@
-package com.dmall.orderservice.adapter.mysql;
+package com.dmall.orderservice.adapter.db;
 
 import com.dmall.orderservice.domain.model.order.Order;
 import lombok.Getter;

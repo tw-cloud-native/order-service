@@ -1,4 +1,4 @@
-package com.dmall.orderservice.application;
+package com.dmall.orderservice.service;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;

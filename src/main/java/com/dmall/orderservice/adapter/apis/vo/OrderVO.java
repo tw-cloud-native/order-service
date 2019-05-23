@@ -1,4 +1,4 @@
-package com.dmall.orderservice.model.vo;
+package com.dmall.orderservice.adapter.apis.vo;
 
 import com.dmall.orderservice.domain.model.order.Order;
 import lombok.Builder;

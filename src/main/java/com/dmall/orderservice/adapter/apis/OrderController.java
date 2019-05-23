@@ -1,10 +1,10 @@
 package com.dmall.orderservice.adapter.apis;
 
 
-import com.dmall.orderservice.application.OrderWriteService;
-import com.dmall.orderservice.application.OrderReadService;
+import com.dmall.orderservice.service.OrderWriteService;
+import com.dmall.orderservice.service.OrderReadService;
 import com.dmall.orderservice.domain.model.order.Order;
-import com.dmall.orderservice.model.vo.OrderVO;
+import com.dmall.orderservice.adapter.apis.vo.OrderVO;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

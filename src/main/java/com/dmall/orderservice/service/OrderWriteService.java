@@ -1,4 +1,4 @@
-package com.dmall.orderservice.application;
+package com.dmall.orderservice.service;
 
 import com.dmall.orderservice.domain.model.order.Order;
 import com.dmall.orderservice.domain.model.order.OrderRepository;

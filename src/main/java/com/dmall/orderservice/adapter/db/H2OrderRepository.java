@@ -1,4 +1,4 @@
-package com.dmall.orderservice.adapter.mysql;
+package com.dmall.orderservice.adapter.db;
 
 import com.dmall.orderservice.domain.model.order.Order;
 import com.dmall.orderservice.domain.model.order.OrderRepository;
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MysqlOrderRepository implements OrderRepository {
+public class H2OrderRepository implements OrderRepository {
     private final OrderPersistence orderPersistence;
 
     @Autowired
-    public MysqlOrderRepository(OrderPersistence orderPersistence) {
+    public H2OrderRepository(OrderPersistence orderPersistence) {
         this.orderPersistence = orderPersistence;
     }
 
