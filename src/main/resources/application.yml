@@ -5,9 +5,16 @@ dmall:
 server:
   port: 9082
 
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+
 spring:
   application:
     name: order-service
+  sleuth:
+    sampler:
+      probability: 1.0
   datasource:
     url: jdbc:h2:mem:order_service_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS order_service_db
     platform: h2
@@ -56,6 +63,8 @@ springfox:
 ---
 spring:
   profiles: prod
+  zipkin:
+    base-url: http://zipkin-server:9411/
 
 dmall:
   inventory:

@@ -46,7 +46,7 @@ public class OrderWriteService {
         String lock(Lock lock);
 
         @RequestMapping(method = RequestMethod.PUT, value = "/inventories/lock/{lockId}")
-        void unlock(@PathVariable String lockId);
+        void unlock(@PathVariable("lockId") String lockId);
     }
 
     @Getter
