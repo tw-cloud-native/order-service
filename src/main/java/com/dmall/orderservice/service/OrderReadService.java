@@ -4,7 +4,7 @@ import com.dmall.orderservice.adapter.comment.CommentService;
 import com.dmall.orderservice.adapter.db.OrderRepository;
 import com.dmall.orderservice.adapter.product.ProductFeign;
 import com.dmall.orderservice.domain.model.Order;
-import com.dmall.orderservice.domain.model.OrderDetail;
+import com.dmall.orderservice.domain.dto.OrderDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class OrderReadService {
         Order order = orderRepository.getOrder(orderId);
 
         String productName = productFeign.getProductName(order.getProductId());
-        String commentString = commentService.GetCommentString();
+        String commentString = commentService.GetComment();
 
         OrderDetail vo = new OrderDetail();
         vo.setOrder(order);

@@ -1,8 +1,9 @@
 package com.dmall.orderservice.adapter.apis;
 
 
+import com.dmall.orderservice.domain.dto.CreateOrderRequest;
 import com.dmall.orderservice.domain.model.Order;
-import com.dmall.orderservice.domain.model.OrderDetail;
+import com.dmall.orderservice.domain.dto.OrderDetail;
 import com.dmall.orderservice.service.OrderReadService;
 import com.dmall.orderservice.service.OrderWriteService;
 import org.springframework.beans.factory.annotation.Autowired;
