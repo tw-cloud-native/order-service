@@ -1,14 +1,15 @@
 package com.dmall.orderservice.adapter.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProductServiceDemo implements ProductService {
+public class ProductServiceImpl implements ProductService {
     private final ProductFeign productFeign;
 
     @Autowired
-    public ProductServiceDemo(ProductFeign productFeign) {
+    public ProductServiceImpl(@Qualifier("product") ProductFeign productFeign) {
         this.productFeign = productFeign;
     }
 

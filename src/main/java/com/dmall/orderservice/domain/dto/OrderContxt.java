@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OrderDetail {
+public class OrderContxt {
     private Order order;
     private String productName;
     private String productImage;

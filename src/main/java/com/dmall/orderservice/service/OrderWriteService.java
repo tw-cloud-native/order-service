@@ -26,7 +26,6 @@ public class OrderWriteService {
     }
 
     public Order createOrder(long productId, int quantity, BigDecimal totalPrice, String address, String phoneNumber) {
-        //lock inventory
         String lockId = inventoryClient.lock(new Lock(quantity, productId));
 
         final Order order = new Order(productId, quantity, totalPrice, address, phoneNumber, lockId);

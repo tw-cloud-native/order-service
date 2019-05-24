@@ -1,6 +1,6 @@
 package com.dmall.orderservice.contract.base;
 
-import com.dmall.orderservice.adapter.apis.RestOrderController;
+import com.dmall.orderservice.adapter.apis.RestOrderControllerImpl;
 import com.dmall.orderservice.service.OrderReadService;
 import com.dmall.orderservice.service.OrderWriteService;
 import com.dmall.orderservice.domain.model.Order;
@@ -23,9 +23,9 @@ public class OrderBase {
                 .thenReturn(
                         new Order("order-id-1", 1, 10, new BigDecimal("1"), "address", "phoneNumber", false, "1")
                 );
-//        when(orderReadService.getOrder(anyString())).thenReturn(
+//        when(orderReadService.get(anyString())).thenReturn(
 //                new Order("1", 1, 10, new BigDecimal(100), "address001", "110", true, "1")
 //        );
-        RestAssuredMockMvc.standaloneSetup(new RestOrderController(orderWriteService, orderReadService));
+        RestAssuredMockMvc.standaloneSetup(new RestOrderControllerImpl(orderWriteService, orderReadService));
     }
 }

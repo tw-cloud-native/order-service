@@ -3,7 +3,7 @@ package com.dmall.orderservice.domain.dto;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
-public class CreateOrderRequest {
+public class Order {
     @NotNull
     public Long productId;
     @NotNull

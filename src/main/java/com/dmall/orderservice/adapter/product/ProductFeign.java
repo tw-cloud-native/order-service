@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(url = "${dmall.inventory.url}", name = "product", fallback = ProductFeignFallback.class)
 public interface ProductFeign {
-    @RequestMapping(method = RequestMethod.POST, value = "/404")
-    String getProductName(Long productId);
+    @RequestMapping(method = RequestMethod.GET, value = "/product/{id}/name")
+    String getProductName(Long id);
+
+    //TODO correct
 }
