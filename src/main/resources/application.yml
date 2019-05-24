@@ -38,6 +38,20 @@ spring:
   flyway:
     locations: "classpath:/db/migration"
 
+  cloud:
+    stream:
+      bindings:
+        outputOrder:
+          destination: order
+          group: default
+          content-type: application/json
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   instance:
     prefer-ip-address: true
