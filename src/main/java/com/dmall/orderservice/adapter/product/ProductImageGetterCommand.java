@@ -1,14 +1,14 @@
-package com.dmall.orderservice.adapter.comment;
+package com.dmall.orderservice.adapter.product;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommentGetterCommand extends HystrixCommand<String> {
+public class ProductImageGetterCommand extends HystrixCommand<String> {
     private static final String COMMAND_GROUP = "default";
 
-    public CommentGetterCommand() {
+    public ProductImageGetterCommand() {
         super(HystrixCommandGroupKey.Factory.asKey(COMMAND_GROUP));
     }
 

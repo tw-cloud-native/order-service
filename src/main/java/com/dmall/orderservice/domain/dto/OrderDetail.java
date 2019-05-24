@@ -9,5 +9,5 @@ import lombok.Setter;
 public class OrderDetail {
     private Order order;
     private String productName;
-    private String comment;
+    private String productImage;
 }
