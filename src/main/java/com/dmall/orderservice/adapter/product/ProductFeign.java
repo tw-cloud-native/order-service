@@ -1,6 +1,5 @@
 package com.dmall.orderservice.adapter.product;
 
-
 import com.dmall.orderservice.adapter.product.fallback.ProductFeignFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

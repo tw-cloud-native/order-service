@@ -1,7 +1,6 @@
 package com.dmall.orderservice.adapter.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,7 +8,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductFeign productFeign;
 
     @Autowired
-    public ProductServiceImpl(@Qualifier("product") ProductFeign productFeign) {
+    public ProductServiceImpl(ProductFeign productFeign) {
         this.productFeign = productFeign;
     }
 
