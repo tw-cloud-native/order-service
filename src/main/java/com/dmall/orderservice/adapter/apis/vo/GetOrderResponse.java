@@ -1,15 +1,12 @@
 package com.dmall.orderservice.adapter.apis.vo;
 
-import com.dmall.orderservice.domain.model.order.Order;
-import lombok.Builder;
+import com.dmall.orderservice.domain.model.Order;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
-public class OrderVO {
+public class GetOrderResponse {
     private Order order;
     private String productName;
     private String comment;

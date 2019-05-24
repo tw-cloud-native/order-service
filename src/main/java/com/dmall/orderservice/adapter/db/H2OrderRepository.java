@@ -1,7 +1,6 @@
 package com.dmall.orderservice.adapter.db;
 
-import com.dmall.orderservice.domain.model.order.Order;
-import com.dmall.orderservice.domain.model.order.OrderRepository;
+import com.dmall.orderservice.domain.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

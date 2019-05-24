@@ -1,4 +1,4 @@
-package com.dmall.orderservice.domain.model.order;
+package com.dmall.orderservice.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

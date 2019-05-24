@@ -1,6 +1,6 @@
-package com.dmall.orderservice.adapter.feign.fallback;
+package com.dmall.orderservice.adapter.product.fallback;
 
-import com.dmall.orderservice.adapter.feign.ProductFeign;
+import com.dmall.orderservice.adapter.product.ProductFeign;
 import org.springframework.stereotype.Component;
 
 @Component

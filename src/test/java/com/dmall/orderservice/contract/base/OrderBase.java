@@ -1,9 +1,9 @@
 package com.dmall.orderservice.contract.base;
 
-import com.dmall.orderservice.adapter.apis.OrderController;
-import com.dmall.orderservice.service.OrderReadService;
-import com.dmall.orderservice.service.OrderWriteService;
-import com.dmall.orderservice.domain.model.order.Order;
+import com.dmall.orderservice.adapter.apis.RestOrderController;
+import com.dmall.orderservice.domain.service.OrderReadService;
+import com.dmall.orderservice.domain.service.OrderWriteService;
+import com.dmall.orderservice.domain.model.Order;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
 
@@ -26,6 +26,6 @@ public class OrderBase {
 //        when(orderReadService.getOrder(anyString())).thenReturn(
 //                new Order("1", 1, 10, new BigDecimal(100), "address001", "110", true, "1")
 //        );
-        RestAssuredMockMvc.standaloneSetup(new OrderController(orderWriteService, orderReadService));
+        RestAssuredMockMvc.standaloneSetup(new RestOrderController(orderWriteService, orderReadService));
     }
 }

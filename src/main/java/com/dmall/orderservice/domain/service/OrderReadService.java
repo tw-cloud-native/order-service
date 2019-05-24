@@ -1,9 +1,10 @@
-package com.dmall.orderservice.service;
+package com.dmall.orderservice.domain.service;
 
-import com.dmall.orderservice.domain.model.order.Order;
-import com.dmall.orderservice.domain.model.order.OrderRepository;
-import com.dmall.orderservice.adapter.feign.ProductFeign;
-import com.dmall.orderservice.adapter.apis.vo.OrderVO;
+import com.dmall.orderservice.adapter.apis.vo.GetOrderResponse;
+import com.dmall.orderservice.adapter.comment.CommentService;
+import com.dmall.orderservice.adapter.product.ProductFeign;
+import com.dmall.orderservice.domain.model.Order;
+import com.dmall.orderservice.adapter.db.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +21,16 @@ public class OrderReadService {
         this.commentService = commentService;
     }
 
-    public OrderVO getOrder(String orderId) {
+    public GetOrderResponse getOrder(String orderId) {
         Order order = orderRepository.getOrder(orderId);
-        String productName = productFeign.getProductName(order.getProductId());
-        String comment = commentService.execute();
 
-        OrderVO vo = new OrderVO();
+        String productName = productFeign.getProductName(order.getProductId());
+        String commentString = commentService.GetCommentString();
+
+        GetOrderResponse vo = new GetOrderResponse();
         vo.setOrder(order);
         vo.setProductName(productName);
-        vo.setComment(comment);
+        vo.setComment(commentString);
         return vo;
     }
 }

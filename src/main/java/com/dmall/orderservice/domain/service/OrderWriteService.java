@@ -1,7 +1,7 @@
-package com.dmall.orderservice.service;
+package com.dmall.orderservice.domain.service;
 
-import com.dmall.orderservice.domain.model.order.Order;
-import com.dmall.orderservice.domain.model.order.OrderRepository;
+import com.dmall.orderservice.domain.model.Order;
+import com.dmall.orderservice.adapter.db.OrderRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
