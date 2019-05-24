@@ -5,10 +5,10 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GetCommentStringCommand extends HystrixCommand<String> {
+public class CommentStringGetterCommand extends HystrixCommand<String> {
     private static final String COMMAND_GROUP = "default";
 
-    public GetCommentStringCommand() {
+    public CommentStringGetterCommand() {
         super(HystrixCommandGroupKey.Factory.asKey(COMMAND_GROUP));
     }
 

@@ -1,4 +1,4 @@
-package com.dmall.orderservice.adapter.apis.vo;
+package com.dmall.orderservice.adapter.apis;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;

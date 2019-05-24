@@ -1,3 +1,0 @@
-[submodule "api/order"]
-	path = api/order
-	url = https://github.com/DDD-China/order-service-contracts.git

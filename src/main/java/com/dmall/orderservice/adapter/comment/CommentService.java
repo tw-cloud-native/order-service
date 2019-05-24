@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommentService {
     public String GetCommentString() {
-        return new GetCommentStringCommand().execute();
+        return new CommentStringGetterCommand().execute();
     }
 }

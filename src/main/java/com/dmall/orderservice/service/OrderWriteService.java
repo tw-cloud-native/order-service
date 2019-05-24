@@ -1,15 +1,11 @@
-package com.dmall.orderservice.domain.service;
+package com.dmall.orderservice.service;
 
-import com.dmall.orderservice.domain.model.Order;
 import com.dmall.orderservice.adapter.db.OrderRepository;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import com.dmall.orderservice.adapter.inventory.InventoryClient;
+import com.dmall.orderservice.adapter.inventory.Lock;
+import com.dmall.orderservice.domain.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.math.BigDecimal;
 
@@ -25,7 +21,7 @@ public class OrderWriteService {
     }
 
     public Order createOrder(long productId, int quantity, BigDecimal totalPrice, String address, String phoneNumber) {
-//lock inventory
+        //lock inventory
         String lockId = inventoryClient.lock(new Lock(quantity, productId));
 
         final Order order = new Order(productId, quantity, totalPrice, address, phoneNumber, lockId);
@@ -38,21 +34,5 @@ public class OrderWriteService {
         order.paid();
         inventoryClient.unlock(order.getLockId());
         orderRepository.save(order);
-    }
-
-    @FeignClient(url = "${dmall.inventory.url}", name = "inventory")
-    public interface InventoryClient {
-        @RequestMapping(method = RequestMethod.POST, value = "/inventories/lock")
-        String lock(Lock lock);
-
-        @RequestMapping(method = RequestMethod.PUT, value = "/inventories/lock/{lockId}")
-        void unlock(@PathVariable("lockId") String lockId);
-    }
-
-    @Getter
-    @AllArgsConstructor
-    public static class Lock {
-        int quantity;
-        long productId;
     }
 }
