@@ -3,7 +3,7 @@ package com.dmall.orderservice.service;
 import com.dmall.orderservice.adapter.db.OrderRepository;
 import com.dmall.orderservice.adapter.inventory.InventoryClient;
 import com.dmall.orderservice.adapter.inventory.Lock;
-import com.dmall.orderservice.adapter.mq.EventStreams;
+import com.dmall.orderservice.adapter.events.EventStreams;
 import com.dmall.orderservice.domain.event.OrderCreatedEvent;
 import com.dmall.orderservice.domain.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
