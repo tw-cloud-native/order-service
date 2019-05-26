@@ -74,17 +74,3 @@ springfox:
     swagger:
       v2:
         path: /swagger
----
-spring:
-  profiles: prod
-  zipkin:
-    base-url: http://zipkin-server:9411/
-
-dmall:
-  inventory:
-    url: http://inventory-service:9080
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka-server:8080/eureka/
