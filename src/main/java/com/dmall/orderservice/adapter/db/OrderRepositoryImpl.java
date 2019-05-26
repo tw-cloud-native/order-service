@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class H2OrderRepository implements OrderRepository {
+public class OrderRepositoryImpl implements OrderRepository {
     private final OrderPersistence orderPersistence;
 
     @Autowired
-    public H2OrderRepository(OrderPersistence orderPersistence) {
+    public OrderRepositoryImpl(OrderPersistence orderPersistence) {
         this.orderPersistence = orderPersistence;
     }
 
