@@ -2,16 +2,11 @@ dmall:
   inventory:
     url: http://localhost:9081
 
-server:
-  port: 9082
-
 logging:
   level:
     org.springframework.web.servlet.DispatcherServlet: DEBUG
 
 spring:
-  application:
-    name: order-service
   sleuth:
     sampler:
       probability: 1.0

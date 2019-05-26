@@ -1,0 +1,10 @@
+server:
+  port: 9082
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    config:
+      fail-fast: true
+      enabled: false
