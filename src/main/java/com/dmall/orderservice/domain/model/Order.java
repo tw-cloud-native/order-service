@@ -30,7 +30,11 @@ public class Order {
         this.lockId = lockId;
     }
 
-    public void paid() {
+    public void pay() {
         paid = true;
+    }
+
+    public void lockInventory(String lockId) {
+        this.lockId = lockId;
     }
 }

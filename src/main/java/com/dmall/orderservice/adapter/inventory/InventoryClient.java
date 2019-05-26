@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(url = "${dmall.inventory.url}", name = "inventory")
 public interface InventoryClient {
-    @RequestMapping(method = RequestMethod.POST, value = "/inventories/lock")
-    String lock(Lock lock);
-
-    @RequestMapping(method = RequestMethod.PUT, value = "/inventories/lock/{lockId}")
-    void unlock(@PathVariable("lockId") String lockId);
+//    @RequestMapping(method = RequestMethod.POST, value = "/inventories/lock")
+//    String lock(Lock lock);
+//
+//    @RequestMapping(method = RequestMethod.PUT, value = "/inventories/lock/{lockId}")
+//    void unlock(@PathVariable("lockId") String lockId);
 }

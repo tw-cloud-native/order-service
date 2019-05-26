@@ -36,6 +36,10 @@ spring:
   cloud:
     stream:
       bindings:
+        inputInventory:
+          destination: inventory
+          group: default
+          content-type: application/json
         outputOrder:
           destination: order
           group: default

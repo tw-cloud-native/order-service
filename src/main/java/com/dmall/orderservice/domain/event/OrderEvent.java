@@ -8,7 +8,10 @@ import java.math.BigDecimal;
 
 @Value
 @Builder
-public class OrderCreatedEvent {
+public class OrderEvent {
+    public static final String ORDER_CREATED = "OrderCreated";
+    public static final String ORDER_PAID = "OrderPaid";
+
     private final String id;
     private final long productId;
     private final int quantity;
@@ -17,11 +20,20 @@ public class OrderCreatedEvent {
     private final String phoneNumber;
     private boolean paid;
     private String lockId;
-    private String eventType = "OrderCreated";
+    private String eventType;
 
-    public static OrderCreatedEvent from(Order order) {
+    public static OrderEvent createdEvent(Order order) {
+        OrderEvent orderEvent = build(order, ORDER_CREATED);
+        return orderEvent;
+    }
 
-        return OrderCreatedEvent.builder()
+    public static OrderEvent paidEvent(Order order) {
+        OrderEvent orderEvent = build(order, ORDER_PAID);
+        return orderEvent;
+    }
+
+    private static OrderEvent build(Order order, String eventType) {
+        return OrderEvent.builder()
                 .id(order.getId())
                 .productId(order.getProductId())
                 .quantity(order.getQuantity())
@@ -30,6 +42,7 @@ public class OrderCreatedEvent {
                 .phoneNumber(order.getPhoneNumber())
                 .paid(order.isPaid())
                 .lockId(order.getLockId())
+                .eventType(eventType)
                 .build();
     }
 }
