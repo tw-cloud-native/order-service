@@ -9,7 +9,7 @@ node{
     }
 
     withEnv([
-        'SERVICE=inventory-service',
+        'SERVICE=order-service',
         'PROFILES=dev'
     ]){
         stage('Build') {
