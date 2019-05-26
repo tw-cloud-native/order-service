@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OrderContxt {
+public class OrderContext {
     private Order order;
     private String productName;
     private String productImage;

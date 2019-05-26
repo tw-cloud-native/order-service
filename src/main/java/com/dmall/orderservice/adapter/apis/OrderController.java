@@ -1,12 +1,12 @@
 package com.dmall.orderservice.adapter.apis;
 
 import com.dmall.orderservice.domain.dto.Order;
-import com.dmall.orderservice.domain.dto.OrderContxt;
+import com.dmall.orderservice.domain.dto.OrderContext;
 
 public interface OrderController {
-    OrderContxt create(Order order);
+    OrderContext create(Order order);
 
-    OrderContxt get(String orderId);
+    OrderContext get(String orderId);
 
     void updateOrder(String orderId);
 }
