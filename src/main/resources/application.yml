@@ -1,15 +1,9 @@
-dmall:
-  inventory:
-    url: http://localhost:9081
-
-logging:
-  level:
-    org.springframework.web.servlet.DispatcherServlet: DEBUG
+server:
+  port: 9082
 
 spring:
-  sleuth:
-    sampler:
-      probability: 1.0
+  application:
+    name: order-service
   datasource:
     url: jdbc:h2:mem:order_service_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS order_service_db
     platform: h2
@@ -33,43 +27,12 @@ spring:
   flyway:
     locations: "classpath:/db/migration"
 
-  cloud:
-    stream:
-      bindings:
-        inputInventory:
-          destination: inventory
-          group: default
-          content-type: application/json
-        outputOrder:
-          destination: order
-          group: default
-          content-type: application/json
-
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://localhost:8080/eureka/
-
-feign:
-  hystrix:
-    enabled: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
 springfox:
   documentation:
     swagger:
       v2:
         path: /swagger
+
+dmall:
+  inventory:
+    url: http://localhost:9081

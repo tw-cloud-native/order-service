@@ -1,7 +1,6 @@
 node{
     stage('Checkout') {
-        git url: 'https://github.com/tw-cloud-native/order-service.git',
-            branch: 'master'
+        checkout scm
     }
 
     stage('Test') {
@@ -10,16 +9,18 @@ node{
 
     withEnv([
         'SERVICE=order-service',
-        'PROFILES=dev'
     ]){
         stage('Build') {
             sh './build.sh'
         }
+    }
 
+    withEnv([
+        'SERVICE=order-service',
+        'PROFILES=dev'
+    ]){
         stage('Deploy') {
-            //withCredentials([file(credentialsId: 'KUBE_CONFIG', variable: 'KUBE_CONFIG')]) {
-                sh './deploy.sh'
-            //}
+            sh './deploy.sh'
         }
     }
 
