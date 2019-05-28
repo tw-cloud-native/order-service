@@ -2,5 +2,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka-server:8080/eureka/
-
-#TODO: add zipkin configs for dev env
+spring:
+  zipkin:
+    base-url: http://zipkin-server:9411/
