@@ -27,6 +27,12 @@ spring:
   flyway:
     locations: "classpath:/db/migration"
 
+  #TODO: change sleuth sample probability
+
+  #TODO: add zipkin configs for local
+
+#TODO: change servlet log level to view the logs
+
 springfox:
   documentation:
     swagger:
