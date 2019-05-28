@@ -53,6 +53,10 @@ ext {
 }
 
 dependencies {
+    //TODO: add eureka starter
+
+    //TODO: add feign client library
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
