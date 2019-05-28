@@ -1,8 +1,15 @@
 package com.dmall.orderservice.adapter.inventory;
 
-//TODO change to use feign client
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@FeignClient(value = "inventory-service")
 public interface InventoryClient {
+    @RequestMapping(method = RequestMethod.POST, value = "/inventories/lock")
     String lock(Lock lock);
 
-    void unlock(String lockId);
+    @RequestMapping(method = RequestMethod.PUT, value = "/inventories/lock/{lockId}")
+    void unlock(@PathVariable("lockId") String lockId);
 }

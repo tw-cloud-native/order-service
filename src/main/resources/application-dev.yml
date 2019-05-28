@@ -1,6 +1,4 @@
-#TODO: remove inventory service url config
-dmall:
-  inventory:
-    url: http://172.20.1.30:9081
-
-#TODO: add eureka configs for dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8080/eureka/

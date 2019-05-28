@@ -33,9 +33,10 @@ springfox:
       v2:
         path: /swagger
 
-#TODO: remove inventory service url config
-dmall:
-  inventory:
-    url: http://localhost:9081
 
-#TODO: add eureka configs
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
