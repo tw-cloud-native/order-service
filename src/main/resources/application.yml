@@ -29,6 +29,10 @@ spring:
   zipkin:
     base-url: http://zipkin.team-a.cloud.school.thoughtworks.cn
 
+# TODO: config stream bindings
+
+# TODO: config rabbitmq
+
 logging:
   level:
     org.springframework.web: DEBUG
