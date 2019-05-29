@@ -29,9 +29,19 @@ spring:
   zipkin:
     base-url: http://zipkin.team-a.cloud.school.thoughtworks.cn
 
-# TODO: config stream bindings
+  cloud:
+    stream:
+      bindings:
+        outputOrder:
+          destination: order
+          group: default
+          content-type: application/json
 
-# TODO: config rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 logging:
   level:

@@ -7,7 +7,7 @@ public interface EventStreams {
 
     String OUTPUT_ORDER = "outputOrder";
 
-    //TODO: binding
+    @Output(OUTPUT_ORDER)
     MessageChannel outputOrder();
 
 }

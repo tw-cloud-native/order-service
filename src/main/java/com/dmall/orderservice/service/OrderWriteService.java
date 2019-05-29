@@ -33,7 +33,7 @@ public class OrderWriteService {
         final Order order = new Order(productId, quantity, totalPrice, address, phoneNumber, lockId);
         orderRepository.save(order);
 
-        //TODO: send out order created event
+        eventStreams.outputOrder().send(MessageBuilder.withPayload(OrderEvent.createdEvent(order)).build());
 
         return order;
     }
