@@ -52,4 +52,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:8080/eureka/
 
-#TODO: enable feign hystrix
+feign:
+  hystrix:
+    enabled: true
+
