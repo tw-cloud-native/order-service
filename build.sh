@@ -5,7 +5,7 @@ set -ex
 curl http://tools.cloud.school.thoughtworks.cn/ | sudo sh -
 
 
-TAG=$SERVICE-$BUILD_TAG
+TAG=$SERVICE-$BRANCH_NAME
 
 ./gradlew build
 
