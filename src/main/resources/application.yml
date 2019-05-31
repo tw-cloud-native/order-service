@@ -56,3 +56,9 @@ feign:
   hystrix:
     enabled: true
 
+#TODO: enable actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
